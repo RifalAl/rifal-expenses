@@ -21,7 +21,7 @@ const ExpenseList = ({ listData }) => {
   return (
     <Card className={"mt-5 p-3"}>
       <ExpenseFilter onFilter={filterChangeHandler} />
-      <ExpenseChart expenses={filteredExpenses}/>
+      <ExpenseChart expenses={filteredExpenses} filteredYear={filteredYear}/>
       <ExpenseItem filteredExpenses={filteredExpenses}/>
     </Card>
   );

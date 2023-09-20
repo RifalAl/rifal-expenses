@@ -1,7 +1,7 @@
 import Card from "../UI/Card";
 import ChartBar from "./ChartBar";
 
-const ExpenseChart = ({ expenses }) => {
+const ExpenseChart = ({ expenses, filteredYear }) => {
   const chartDataPoints = [
     { label: "Jan", value: 0 },
     { label: "Feb", value: 0 },
@@ -26,16 +26,22 @@ const ExpenseChart = ({ expenses }) => {
   const totalMaximum = Math.max(...dataPointValues);
 
   return (
-    <Card className={"mt-5 mb-5 p-5 flex justify-around h-[10rem] bg-[#ffecdb]"}>
-      {chartDataPoints.map((item) => (
-        <ChartBar
-          key={item.label}
-          maxValue={totalMaximum}
-          value={item.value}
-          label={item.label}
-        />
-      ))}
-    </Card>
+    <>
+      {filteredYear === "all" ? null : (
+        <Card
+          className={"mt-5 mb-5 p-5 flex justify-around h-[10rem] bg-[#ffecdb] ease-in transition-all"}
+        >
+          {chartDataPoints.map((item) => (
+            <ChartBar
+              key={item.label}
+              maxValue={totalMaximum}
+              value={item.value}
+              label={item.label}
+            />
+          ))}
+        </Card>
+      )}
+    </>
   );
 };
 
